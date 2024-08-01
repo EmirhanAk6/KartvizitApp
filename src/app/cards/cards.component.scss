@@ -1,0 +1,30 @@
+.card-item{
+    margin-bottom: 30px;
+}
+.d-flex{
+    align-items: center;
+}
+
+
+::ng-deep{
+    .ngx-pagination{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .ngx-pagination-li{
+        width: 35px;
+        height: 35px;
+        border-radius: 50% !important;
+        background: #f8f8f8;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.small-screen{
+        display: none !important;
+    }
+}

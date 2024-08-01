@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "deneme",
+      "author": "typicode"
+    }
+  ],
+  "signupUsers": [
+    {
+      "fullname": "ela",
+      "email": "emirhan.akkaya@hotmail.com",
+      "password": "123456",
+      "mobile": 5315445255,
+      "id": 4
+    },
+    {
+      "fullname": "Emirhan Akkaya",
+      "email": "emirhan.akkaya2@hotmail.com",
+      "password": "235689",
+      "mobile": 545646546,
+      "id": 5
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

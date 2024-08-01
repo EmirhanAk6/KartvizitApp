@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>{{ data ? "Kartviziti Düzenle" : "Kartvizit Ekle" }}</h2>
+<mat-dialog-content class="mat-typography">
+  <div *ngIf="showSpinner">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <br />
+  </div>
+
+  <form [formGroup]="cardForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>*Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>*Phone</mat-label>
+      <input matInput formControlName="phone" placeholder="Örn;0 535 956 85 68" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Adres</mat-label>
+      <textarea matInput formControlName="address"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div>
+    <button mat-button mat-dialog-close>Vazgeç</button>
+
+    <button mat-button color="primary" (click)="data ? openModal(card) : addCard()"
+      [disabled]="cardForm.invalid || showSpinner">
+      {{ data ? "Güncelle" : "Ekle" }}
+    </button>
+    <!-- <div class="modal" [class.show]="isModalOpen">
+      <div class="modal-content">
+        <p>Güncellemek istediğinize emin misiniz?</p>
+        <button (click)="confirmUpdateCard()">Onayla</button>
+        <button (click)="cancelUpdate()">Vazgeç</button>
+      </div>
+    </div> -->
+    <!-- <div class="modal" [class.show]="isModalOpen">
+      <div class="modal-content">
+        <h2 class="start" mat-dialog-title>Güncellemek istediğinize emin misiniz?</h2>
+        
+        <mat-dialog-actions >
+          <button mat-button (click)="cancelUpdate()">Hayır</button>
+          <button mat-button (click)="confirmUpdateCard()" mat-dialog-close>Evet</button>
+        </mat-dialog-actions>
+      </div>
+    </div> -->
+  </div>
+</mat-dialog-actions>
