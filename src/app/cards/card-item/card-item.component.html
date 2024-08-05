@@ -4,54 +4,45 @@
     <mat-card-subtitle>{{ card.title }}</mat-card-subtitle>
 
     <div class="container">
-      <button class="btn btn-primary btn-sm" style="background-color: #0000ff" (click)="openUpdateCardModal(card)">
-        Düzenle
+      <button mat-icon-button color="primary"
+        (click)="openUpdateCardModal(card)">
+        <mat-icon>edit</mat-icon>
       </button>
-
-      <!-- <button class="btn" style="background-color: #ff0000" (click)="openModal(card)">
-        Sil
-      </button> -->
-      <button class="btn" mat-fab aria-label="Example icon button with a delete icon" (click)="openModal(card)">
+      <button  mat-icon-button color="warn" (click)="openModal(card)">
         <mat-icon>delete</mat-icon>
       </button>
-
-
-      <!-- <div class="modal" [class.show]="isModalOpen">
-        <div class="modal-content">
-          <p>Silmek için emin misiniz?</p>
-          
-            <button class="form1" (click)="confirmDelete()">Onayla</button>
-          <button class="form2" (click)="cancelDelete()">Vazgeç</button>
-          
-        </div>
-      </div>-->
-        <!-- <div class="modal" [class.show]="isModalOpen">
-          <div class="modal-content">
-            <h2 mat-dialog-title>Kartınızı silmek istiyor musunuz?</h2>
-            
-            <mat-dialog-actions >
-              <button mat-button (click)="cancelDelete()">Hayır</button>
-              <button mat-button (click)="confirmDelete()" mat-dialog-close>Evet</button>
-            </mat-dialog-actions>
-          </div>
-        </div> -->
-     
-    </div> 
+    </div>
   </mat-card-header>
   <mat-card-content>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{ card.phone }}</li>
+      
       <li class="list-group-item">
-        <span *ngIf="card.email">{{ card.email }}</span>
+        <mat-icon>phone</mat-icon>
+        <span class="list">{{ card.phone }}</span>
+      </li>
+      <li class="list-group-item">
+        
+        <mat-icon>mail</mat-icon>
+          <span class="list" *ngIf="card.email">{{ card.email }} </span>
+        
         <small class="text-warning no-content" *ngIf="!card.email">E-posta adresi girilmemiş
         </small>
       </li>
 
       <li class="list-group-item">
-        <span>{{ card.address }}</span>
-        <small class="text-warning no-content" *ngIf="!card.address">Adres girilmemiş
+        <mat-icon>home</mat-icon>
+        <span class="list" *ngIf="card.address" >{{ card.address }}</span>
+        <small class="text-warning no-content" *ngIf="!card.address">
+          Adres girilmemiş
         </small>
       </li>
+      <div class="alt-cizgi" *ngIf="
+          !card.address ||
+          !card.email ||
+          !card.name ||
+          !card.phone ||
+          !card.title
+        "></div>
     </ul>
   </mat-card-content>
 </mat-card>

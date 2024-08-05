@@ -14,5 +14,9 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  
+  
+  "ngx-mask": ["node_modules/ngx-mask/fesm2015/ngx-mask.mjs"]
 }
+

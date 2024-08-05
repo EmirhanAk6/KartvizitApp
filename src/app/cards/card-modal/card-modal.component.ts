@@ -24,8 +24,8 @@ export class CardModalComponent implements OnInit {
     private dialogRef: MatDialogRef<CardModalComponent>,
     private fb: FormBuilder,
     private cardService: CardService,
-    private _snackBar: MatSnackBar,
-    private SnackbarService: SnackbarService,
+    /* private _snackBar: MatSnackBar,
+    private SnackbarService: SnackbarService, */
     @Inject(MAT_DIALOG_DATA) public data: Card
   ) {}
 
@@ -36,13 +36,16 @@ export class CardModalComponent implements OnInit {
         this.data?.title || '',
         [Validators.required, Validators.maxLength(255)],
       ],
+
       phone: [
         this.data?.phone || '',
         [
           Validators.required,
           Validators./* pattern */ maxLength(50 /* '^[0-9]{11}$' */),
+          
         ],
       ],
+
       email: [
         this.data?.email || '',
         [Validators.maxLength(50), Validators.email],
@@ -69,20 +72,21 @@ export class CardModalComponent implements OnInit {
     this.isModalOpen = true; */
     Swal.fire({
       title: 'Değişiklikleri kaydetmek istiyor musun?',
-      showCancelButton: true,
-      confirmButtonText: 'Save',
+      showDenyButton: true,
+      denyButtonText: 'Hayır',
+      confirmButtonText: 'Evet',
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         /* Swal.fire("Saved!", "", "success"); */
         this.confirmUpdateCard();
-      } /* else if (result.isDenied) {
+      } else if (result.isDenied) {
         Swal.fire("Güncelleme yapılmadı", "", "info");
-      } */
+      }
     });
   }
 
-/*   closeModal(): void {
+  /*   closeModal(): void {
     this.isModalOpen = false;
   }
  */
@@ -102,7 +106,7 @@ export class CardModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-/*   cancelUpdate(): void {
+  /*   cancelUpdate(): void {
     this.closeModal();
   } */
 
@@ -128,7 +132,12 @@ export class CardModalComponent implements OnInit {
   }
 
   getError(message: string): void {
-    this.SnackbarService.createSnackbar /* ('error', message) */;
+    /* this.SnackbarService.createSnackbar /* ('error', message) ;*/
+    Swal.fire({
+      title: 'Başarısız',
+      text: 'Hata.',
+      icon: 'error',
+    });
     this.showSpinner = false;
     this.dialogRef.close();
   }

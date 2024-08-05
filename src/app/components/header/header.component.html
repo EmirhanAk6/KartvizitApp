@@ -4,7 +4,7 @@
         <span>Kartvizit App</span>
         <span class="example-spacer"></span>
             <ul class="header-menu">
-                <li>
+                <!-- <li>
                     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Anasayfa</a>
                 </li>
                 <li>
@@ -14,11 +14,33 @@
                     <a routerLink="/cards" routerLinkActive="active">Kartvizitler</a>
                 </li>
                 <li>
-                    <a routerLink="/login" routerLinkActive="active" >Login</a>
+                    <a routerLink="/login" routerLinkActive="active" >Giriş Yap</a>
                 </li>
                 <li>
-                    <a routerLink="/signup" routerLinkActive="active">Signup</a>
-                </li>
+                    <a routerLink="/signup" routerLinkActive="active">Kayıt Ol</a>
+                </li> -->
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="background-color: #3F51B5; color: white;">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <!-- <mat-icon>home</mat-icon> -->
+                        <a routerLink="/">Anasayfa</a>
+                      </button>
+                    <button mat-menu-item>
+                      <!-- <mat-icon>account_box</mat-icon> -->
+                      <a routerLink="/cards" >Kartvizitler</a>
+                    </button>
+                    <button mat-menu-item>
+                      <!-- <mat-icon>voicemail</mat-icon> -->
+                      <a routerLink="/login" *ngIf="card" >Giriş Yap</a>
+                    </button>
+                    <button mat-menu-item>
+                      <!-- <mat-icon>notifications_off</mat-icon> -->
+                      <a routerLink="/signup">Kayıt Ol</a>
+                    </button>
+                  </mat-menu>
+                
             </ul>
         
     </mat-toolbar>    

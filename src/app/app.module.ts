@@ -14,8 +14,19 @@ import { MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef } from '@angu
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
+
 
 @NgModule({
+
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   declarations: [AppComponent, HeaderComponent, AboutComponent, HomeComponent, LoginComponent, SignupComponent],
   imports: [
     BrowserModule,
@@ -24,7 +35,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     HttpClientModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatIconModule,
+    
+    
   ],
   providers: [
     {

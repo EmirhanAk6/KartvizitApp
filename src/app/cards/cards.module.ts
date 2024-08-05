@@ -15,7 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CardService } from '../services/card.service';
 import {MatIconModule} from '@angular/material/icon';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import {NgxPaginationModule} from 'ngx-pagination'; 
+import { NgxMaskModule, } from 'ngx-mask';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -34,7 +36,8 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
   providers:[
     CardService,
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    
   ],
 
   imports: [
@@ -49,7 +52,9 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     ReactiveFormsModule,
     MatProgressBarModule,
     NgxPaginationModule,
-    MatIconModule
+    MatIconModule,
+    NgxMaskModule.forRoot(),
+    Ng2SearchPipeModule
   ],
 })
 

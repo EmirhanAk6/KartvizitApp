@@ -3,4 +3,24 @@
     <p class="page-description">
         Hızlandırılmış Angular dersleri için kartvizit App'i geliştiriyoruz.
     </p>
+    <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile >
+            <a routerLink="/about" routerLinkActive="active">Hakkında</a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <a routerLink="/cards" routerLinkActive="active">Kartvizitler</a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <a routerLink="/login" routerLinkActive="active">Giriş Yap</a>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <a routerLink="/signup" routerLinkActive="active">Kayıt Ol</a>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <!-- <div class="row">
+        <div class="column">Hakkında</div>
+        <div class="column">Kartvizitler</div>
+        <div class="column">Giriş Yap</div>
+        <div class="column">Kayıt Ol</div>
+      </div> -->
 </main>

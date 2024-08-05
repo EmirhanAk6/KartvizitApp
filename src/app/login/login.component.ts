@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup} from '@angular/forms'
 import { Subscriber } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder :FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -32,11 +34,18 @@ export class LoginComponent implements OnInit {
           return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
         });
         if(user){
-          alert("Login succesful!!");
+          this._snackBar.open("Giriş başarılı",'' , {
+            duration: 4000,
+            panelClass: ['mat-toolbar', 'mat-primary']
+          });
           this.loginForm.reset();
           this.router.navigate(['cards'])
         }else{
-          alert("user not found!!");
+          this._snackBar.open("Yanlış E-posta veya Şifre",'' , {
+            duration: 4000,
+            panelClass: ['mat-toolbar', 'mat-warn']
+            
+          });
         }
       },err=>{
           alert("something went wrong!!")

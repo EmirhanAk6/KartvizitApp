@@ -21,7 +21,7 @@ export class CardItemComponent implements OnInit {
   @Input() card!: Card;
   showSpinner: boolean = false;
   cardForm!: FormGroup;
-  isModalOpen = false;
+/*   isModalOpen = false; */
 
   constructor(
     
@@ -43,26 +43,27 @@ export class CardItemComponent implements OnInit {
 
   openModal(card: any): void {
     this.deletedcard = card;
-    /* this.isModalOpen = true; */ 
+    /* this.isModalOpen = true;  */
     Swal.fire({
-      title: "Do you want to save the changes?",
-      showCancelButton: true,
-      confirmButtonText: "Save",
+      title: "Kartviziti kalıcı olarak silmek istiyor musunuz?",
+      showDenyButton: true,
+      denyButtonText: 'Hayır',
+      confirmButtonText: "Evet",
       
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.confirmDelete();
-      } /* else if (result.isDenied) {
-        Swal.fire("Changes are not saved", "", "info");
-      } */
+      } else if (result.isDenied) {
+        Swal.fire("Kartvizit Silinmedi", "", "info");
+      }
     });
   }
 
-  closeModal(): void {
+/*   closeModal(): void {
     this.isModalOpen = false;
     
-  }
+  } */
 
   confirmDelete(): void {
     this.showSpinner = true;
@@ -75,13 +76,13 @@ export class CardItemComponent implements OnInit {
         this.getError(err.message || 'Kartvizit silinirken bir sorun oluştu');
       }
     );
-    this.closeModal();
+    /* this.closeModal(); */
   }
 
-  cancelDelete(): void {
+/*   cancelDelete(): void {
     this.closeModal();
   }
-
+ */
 
 
   getSuccessForDelete(/* message: string */): void {

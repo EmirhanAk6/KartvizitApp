@@ -6,7 +6,14 @@
         Bu ekrandan kartvizitlerinizi yönetebilirsiniz.
       </p>
     </div>
-    <button mat-raised-button color="primary" (click) =" openAddCardModal()">Yeni Kartvizit</button>
+    <div class="search-hero">
+      <input type="text" name="search" [(ngModel)]="searchText" placeholder="İsim ara..." style="margin-right: 5px;" />
+    </div>
+    <button  mat-raised-button style="background-color: cadetblue; margin-right: 5px;" (click) =" openAddCardModal()" >Yeni Kartvizit</button>
+    <button  mat-raised-button style="background-color: rgb(184, 33, 33);" routerLink="/login">Çıkış</button>
+  </div>
+  <div>
+
   </div>
   <div class="cards">
     <div class="row">
@@ -16,11 +23,17 @@
       <div class="col-12" *ngIf="cardService.cards.length == 0">
         <span>Henüz kartvizit eklemediniz. <a class="text-primary" (click) = "openAddCardModal()" >Buraya tıklayarak</a> ilk kartvizitinizi ekleyebilirsiniz.</span>
       </div>
-      <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cardService.cards | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+      <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cardService.cards | paginate: { itemsPerPage: itemsPerPage, currentPage: p } | filter:searchText">
         <app-card-item [card]="card"></app-card-item>
       </div>
       <div class="mt-8 py-5 flex justify-center items-center">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls (pageChange)="p = $event"
+        previousLabel=""
+          nextLabel=""
+          small-screen=""
+        >
+          
+        </pagination-controls>
       </div>
     </div>
   </div>
